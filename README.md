@@ -4,6 +4,12 @@ Interactive hackathon prototype: synthetic football events → calculated pressu
 
 Open `dist/index.html` in a browser. No installation or API key is required. The static files can also be served with any HTTP server.
 
+## Demo
+
+[Watch the working prototype demo on YouTube](https://youtu.be/GNT_Y6kA3lc)
+
+The 1 minute 44 second walkthrough shows match replay, turning-point detection, source evidence, analyst explanations and report export. It demonstrates the current prototype; live AI integration is pending.
+
 ## Features
 
 - Play/pause, scrub, speed control and reset for a fictional 90-minute match.
@@ -15,7 +21,7 @@ Open `dist/index.html` in a browser. No installation or API key is required. The
 
 Five-minute windows. Pressure = shots × 3 + successful penalty-area entries. Select the three largest increases of at least 10 over the previous window. This is an illustrative, uncalibrated heuristic, not xG or a claim of causation. Events and teams are fictional. Pitch player markers are schematic and static; the ball path represents the selected event, not continuous tracking. Full-match insights intentionally contain spoilers.
 
-Explanations are currently deterministic templates. **Azure AI / Microsoft Foundry is not connected. This is not yet a complete hackathon submission.** Next: verify the full challenge requirements, connect a server-side Microsoft AI service for grounded explanations, add evaluation cases and prepare the public repository and <2 minute demo. Never put provider API keys in the browser.
+Explanations are currently deterministic templates. **Azure AI / Microsoft Foundry is not connected. This is not yet a complete hackathon submission.** Next: verify the full challenge requirements, connect a server-side Microsoft AI service for grounded explanations, add evaluation cases and complete the remaining submission requirements. Never put provider API keys in the browser.
 
 ## Validation
 
