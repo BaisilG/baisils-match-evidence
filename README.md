@@ -1,4 +1,4 @@
-# MatchTrace
+# Baisil’s Match Evidence
 
 Synthetic football events → calculated pressure shifts → explanations with source evidence.
 
