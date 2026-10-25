@@ -4,7 +4,7 @@ Synthetic football events → calculated pressure shifts → explanations with s
 
 ## Demo
 
-[Watch the original prototype demo](https://youtu.be/GNT_Y6kA3lc). This video shows the template based version before local AI support. It does not demonstrate model inference.
+[Watch the original prototype demo](https://youtu.be/-uXTbeX2EKU). This video shows the template based version before local AI support. It does not demonstrate model inference.
 
 ## Run with local AI: no Azure account or API key
 
