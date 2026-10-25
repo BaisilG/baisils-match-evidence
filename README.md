@@ -4,7 +4,7 @@ Synthetic football events → calculated pressure shifts → explanations with s
 
 ## Demo
 
-[Watch the original prototype demo](https://youtu.be/-uXTbeX2EKU). This video shows the template based version before local AI support. It does not demonstrate model inference.
+[Watch the Baisil’s Match Evidence demo](https://youtu.be/AbT4bRwKqVE). This video shows the working replay, calculated insights, source evidence and report export. Local AI support is included in the code, but actual model inference has not yet been verified.
 
 ## Run with local AI: no Azure account or API key
 
