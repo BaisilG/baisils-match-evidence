@@ -55,4 +55,4 @@ export function createApp({fetchModel=fetch,ollama='http://127.0.0.1:11434'}={})
  }catch{return send(500,{error:'Could not process request.'});}
  });
 }
-if(process.argv[1]&&import.meta.url===pathToFileURL(resolve(process.argv[1])).href){const port=Number(process.env.PORT||4173);createApp().listen(port,'127.0.0.1',()=>console.log(`MatchTrace: http://127.0.0.1:${port} | Local model: ${model}`));}
+if(process.argv[1]&&import.meta.url===pathToFileURL(resolve(process.argv[1])).href){const port=Number(process.env.PORT||4173);createApp().listen(port,'127.0.0.1',()=>console.log(`Baisil’s Match Evidence: http://127.0.0.1:${port} | Local model: ${model}`));}
