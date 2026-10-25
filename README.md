@@ -1,28 +1,51 @@
 # Turning Point
 
-Interactive hackathon prototype: synthetic football events → calculated pressure shifts → explanations with source evidence.
-
-Open `dist/index.html` in a browser. No installation or API key is required. The static files can also be served with any HTTP server.
+Synthetic football events → calculated pressure shifts → explanations with source evidence.
 
 ## Demo
 
-[Watch the working prototype demo on YouTube](https://youtu.be/GNT_Y6kA3lc)
+[Watch the original prototype demo](https://youtu.be/GNT_Y6kA3lc). This video shows the template-based version before local AI support. It does not demonstrate model inference.
 
-The 1 minute 44 second walkthrough shows match replay, turning-point detection, source evidence, analyst explanations and report export. It demonstrates the current prototype; live AI integration is pending.
+## Run with local AI — no Azure account or API key
+
+Requires Node.js 20+ and [Ollama](https://ollama.com/download). Install those first, then:
+
+```sh
+ollama pull phi4-mini
+node server.mjs
+```
+
+Open **http://127.0.0.1:4173**. On Windows you can also double-click `START-LOCAL-AI.cmd` after installing the prerequisites. Keep Ollama running. The model download is about 2.5 GB; runtime memory and speed depend on your machine.
+
+Select a turning point, choose Plain English or Analyst view, then click **Generate AI explanation**. The local Node server sends calculated statistics and source events to Microsoft's Phi-4-mini through Ollama. No API key is required. Match data stays on your computer.
+
+The server checks the response structure and that cited event IDs belong to the selected moment. This is **not full factual verification**: model wording can still be wrong. Review it against the statistics. Responses are cached per moment and audience. Failed generation leaves the deterministic explanation available and labels the failure.
+
+Environment variables: `PORT` (default `4173`) and `OLLAMA_MODEL` (default `phi4-mini`; pull the selected model yourself). The server binds only to loopback and is intended for local use, not direct internet hosting.
+
+## Preview without AI
+
+Open `dist/index.html` or serve `dist/` using a static HTTP server. The hosted preview displays the setup status but **cannot run your computer's local model**. Model generation requires running `node server.mjs` locally. Replay, statistics, evidence and export work independently of AI.
 
 ## Features
 
-- Play/pause, scrub, speed control and reset for a fictional 90-minute match.
-- Three turning points detected from the event data, not hard-coded analytical conclusions.
-- Pitch event replay, pressure chart, two explanation styles and clickable evidence.
-- Export the complete synthetic event fixture, methods and analysis as JSON.
+- Replay, pause, scrub and speed controls for a fictional 90-minute match.
+- Three turning points calculated from 117 synthetic events.
+- Pitch event replay, pressure chart, two deterministic explanation styles and clickable evidence.
+- Optional local model-generated explanations with source references and model provenance.
+- JSON export with events, statistics and any generated narratives, including their model/source metadata.
 
 ## Method and limitations
 
-Five-minute windows. Pressure = shots × 3 + successful penalty-area entries. Select the three largest increases of at least 10 over the previous window. This is an illustrative, uncalibrated heuristic, not xG or a claim of causation. Events and teams are fictional. Pitch player markers are schematic and static; the ball path represents the selected event, not continuous tracking. Full-match insights intentionally contain spoilers.
+Five-minute windows. Pressure = shots × 3 + successful penalty-area entries. Select the three largest increases of at least 10 over the previous window. This is an illustrative heuristic, not xG, a calibrated prediction or proof of causation. Clubs and events are fictional. Player markers are static and schematic; the ball path represents the selected event, not continuous tracking. Full-match insights contain spoilers.
 
-Explanations are currently deterministic templates. **Azure AI / Microsoft Foundry is not connected. This is not yet a complete hackathon submission.** Next: verify the full challenge requirements, connect a server-side Microsoft AI service for grounded explanations, add evaluation cases and complete the remaining submission requirements. Never put provider API keys in the browser.
+**Integration status:** API and validation tests use simulated model responses. Live Phi-4-mini inference has not yet been verified because Ollama is not installed on the development machine. Installing and running the model is still required. Azure AI / Microsoft Foundry is not connected. Check hackathon eligibility against the full challenge requirements; using a Microsoft model locally does not establish eligibility for an Azure-specific category.
 
 ## Validation
 
-Run `node verify.cjs` to check fixture analysis, score progression and exported analysis in a minimal DOM harness. Browser visual QA is separate.
+```sh
+node verify.cjs
+node test-ai.mjs
+```
+
+Checks cover match events, pressure shifts, scores, server-side facts, response structure and citations, model failures, caching, invalid input and cross-origin restrictions. They do not prove successful real model inference or narrative quality.
